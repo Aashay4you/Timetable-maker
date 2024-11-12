@@ -2,16 +2,14 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import Homepage from "./components/Homepage";
 import Current from "./components/Current";
-import { Auth } from "aws-amplify";
-import { AmplifyAuthenticator, AmplifySignUp, AmplifySignIn, AmplifyConfirmSignUp } from "@aws-amplify/ui-react";
 
 const TABLE_SIZE = 6 * 7;
-
 function getInitialSlots() {
     const initialSlots = {};
     for (let i = 0; i < TABLE_SIZE; i++) {
         initialSlots[i] = null;
     }
+
     return initialSlots;
 }
 
@@ -41,19 +39,6 @@ export default function App() {
     const [currentActive, setCurrentActive] = useState(
         Boolean(searchParams.get("time") || localStorage.getItem("timid"))
     );
-    const [user, setUser] = useState(null);
-
-    useEffect(() => {
-        async function checkUser() {
-            try {
-                const user = await Auth.currentAuthenticatedUser();
-                setUser(user);
-            } catch {
-                setUser(null);
-            }
-        }
-        checkUser();
-    }, []);
 
     useEffect(
         function () {
@@ -76,41 +61,28 @@ export default function App() {
     }, []);
 
     return (
-        <AmplifyAuthenticator>
-            {user ? (
-                <>
-                    {currentActive ? (
-                        <Current
-                            TABLE_SIZE={TABLE_SIZE}
-                            times={times}
-                            slots={slots}
-                            searchParams={searchParams}
-                            setCurrentActive={setCurrentActive}
-                            title={title}
-                        />
-                    ) : (
-                        <Homepage
-                            setCurrentActive={setCurrentActive}
-                            slots={slots}
-                            setSlots={setSlots}
-                            getInitialSlots={getInitialSlots}
-                            times={times}
-                            setTimes={setTimes}
-                            title={title}
-                            setTitle={setTitle}
-                        />
-                    )}
-                </>
+        <>
+            {currentActive ? (
+                <Current
+                    TABLE_SIZE={TABLE_SIZE}
+                    times={times}
+                    slots={slots}
+                    searchParams={searchParams}
+                    setCurrentActive={setCurrentActive}
+                    title={title}
+                />
             ) : (
-                <AmplifySignUp
-                    slot="sign-up"
-                    usernameAlias="email"
-                    formFields={[
-                        { type: "email" },
-                        { type: "password" },
-                    ]}
+                <Homepage
+                    setCurrentActive={setCurrentActive}
+                    slots={slots}
+                    setSlots={setSlots}
+                    getInitialSlots={getInitialSlots}
+                    times={times}
+                    setTimes={setTimes}
+                    title={title}
+                    setTitle={setTitle}
                 />
             )}
-        </AmplifyAuthenticator>
+        </>
     );
 }
