@@ -185,7 +185,7 @@ export default function Current({
                                                     styles.currentHeadingRoom
                                                 }
                                             >
-                                                GO HOME OR SOME SHIT
+                                                Leisure time
                                             </h2>
                                         </>
                                     )}
