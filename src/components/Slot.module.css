@@ -1,0 +1,36 @@
+.timeSlot {
+    justify-content: center !important;
+    background-color: hsl(var(--color-theme-dark), 30%) !important;
+}
+
+.time {
+    font-family: monospace;
+}
+
+.input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 0.9em;
+}
+
+.subject {
+    resize: none;
+    font-family: inherit;
+    color: hsl(var(--color-theme));
+    font-weight: bold;
+    font-size: 1em;
+}
+
+@media print {
+
+    .input::placeholder,
+    .subject::placeholder {
+        opacity: 0;
+    }
+}
+
+.activeSlot {
+    background: hsl(var(--color-theme-dark)) !important;
+}

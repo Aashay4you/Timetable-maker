@@ -1,0 +1,42 @@
+.table {
+    display: grid;
+    grid-template-columns: repeat(6, 12vw);
+    grid-template-rows: 70px, repeat(7, 1fr);
+
+    background: hsl(var(--color-theme-dim), 10%);
+
+    min-height: 70rem;
+    overflow: auto;
+    border-radius: 1rem;
+}
+
+@media print {
+    .table {
+        grid-template-columns: repeat(6, 200px);
+        min-height: 70rem;
+    }
+}
+
+.table::-webkit-scrollbar {
+    display: none;
+}
+
+:global(.table-item) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    cursor: default;
+    border: 1px solid hsl(var(--color-theme-dim), 30%);
+    background-color: rgb(42, 42, 42);
+}
+
+:global(.daysRow) {
+    justify-content: center;
+    padding: 1rem 0;
+    background-color: hsl(var(--color-theme-dark), 30%);
+    border: none;
+    font-weight: bold;
+}

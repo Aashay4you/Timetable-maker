@@ -1,0 +1,35 @@
+.main {
+    min-height: 100vh;
+    min-height: 100svh;
+    min-width: 100vw;
+    min-width: 100svw;
+    display: grid;
+    grid-template-columns: 1fr 3.5fr;
+    backdrop-filter: blur(50px);
+
+    font-size: 1.5rem;
+}
+
+:global(.p2) {
+    padding: 2rem;
+}
+
+@media screen and (max-width: 870px) {
+    .main {
+        position: relative;
+    }
+
+    .main::after {
+        content: "Please use a bigger screen. We don't support smaller screens :)";
+        position: absolute;
+        z-index: 99;
+        min-width: 100vw;
+        min-height: 100vh;
+        padding-block: 50%;
+        padding-inline: 2rem;
+        background-color: black;
+        color: hsl(var(--color-light), 80%);
+        text-align: center;
+        font-size: 2em;
+    }
+}

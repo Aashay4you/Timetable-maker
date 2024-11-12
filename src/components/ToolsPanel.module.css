@@ -1,0 +1,14 @@
+.toolsPanel {
+    background-color: hsl(var(--color-theme-dark), 40%);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+@media print {
+    .toolsPanel {
+        display: none;
+    }
+}

@@ -1,0 +1,41 @@
+.inputItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+}
+
+input[type=number] {
+    max-width: 6rem;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.input {
+    text-align: center;
+    border-radius: 100vh;
+    outline: none;
+    border: 1px solid hsl(var(--color-theme-gray), 60%);
+    background-color: hsl(var(--color-theme-gray), 40%);
+    color: hsl(var(--color-light));
+    cursor: pointer;
+    padding: 1rem 1.5rem;
+
+    transition: background-color 300ms ease;
+}
+
+.input::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.input:hover {
+    background-color: hsl(var(--color-theme-gray), 60%);
+}
+
+.input::placeholder {
+    color: hsl(var(--color-light), 70%);
+}
