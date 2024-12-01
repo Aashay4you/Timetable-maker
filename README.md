@@ -1,4 +1,3 @@
-# timid
 
 A timetable maker with looks easy on the eyes and a friendly app to keep track of the current lecture, hopefully.
 
